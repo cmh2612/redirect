@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return '<h1>Hello, World!</h1> <a href="/random_facts">View a random fact!</a>'
+    return '<h1>Hello, World!</h1> <a href="/random_facts">View a random fact!</a> <a href="/coin">Flip a coin!</a>'
 
 @app.route("/random_facts")
 def random_f():
@@ -16,5 +16,10 @@ def random_f():
     ]
 
     return f'<p>{random.choice(facts_list)}</p>'
+
+@app.route("/coin")
+def flip_coin():
+    result = random.choice(["Kepala", "Ekor"])
+    return f'<p>{result}</p>'
 
 app.run(debug=True)
